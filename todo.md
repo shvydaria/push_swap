@@ -43,6 +43,25 @@
 
 ### k_sort
 
+1. Normalize the numbers
+Convert each number in Stack A to its rank (position if sorted), ranging from 1 to N.
+2. Initialize counters
+Set count_B = 0 to track the number of elements in Stack B.
+3. Push elements from A to B
+Iterate through Stack A and apply the following rules:
+- If the top element of A (v) is less than or equal to count_B, push it to B and rotate B (pb + rb).
+- If v is greater than count_B but less than or equal to count_B + chunk_size, push it to B without rotating B (pb).
+- Otherwise, rotate A (ra) to examine the next element.
+4. Adjust chunk size dynamically
+After each push to Stack B, increment count_B. Optionally, adjust chunk_size to control the size of each chunk being pushed.
+5. Form the K-shape
+This chunking strategy naturally creates a K-shaped distribution in Stack B: smaller numbers accumulate in the middle, and larger numbers are at the ends.
+6. Push elements back to A
+To sort Stack A:
+- Identify the largest element in Stack B.
+- Rotate Stack B (rb or rrb) to bring this element to the top.
+- Push it to Stack A (pa).
+- Repeat until Stack B is empty.
 
 ### STRUCTURE:
 - push_swap.c can focus on the high-level flow: main calls init_stack, then sort_stack, and then cleans up. It doesn't need to know the messy details of how the stack is built.
@@ -76,6 +95,47 @@ The program executes in a clear, sequential order:
 
 5. Cleanup (in push_swap.c):
 	- Once stack_a is sorted, main performs the final cleanup, calling free_split and free_stack to prevent any memory leaks before exiting.
+
+
+### Walkthough
+Your Push_Swap: A Code Walk-through
+Here is a simple, step-by-step explanation of your project that you can use to explain it to others.
+
+Part 1: The Setup - Getting the Numbers Ready
+Our program's journey begins in main.c.
+
+Read Input: The program first checks how the numbers are given. It can handle them as separate arguments (./push_swap 1 2 3) or as a single string (./push_swap "1 2 3").
+Error Checking (init.c, utils.c): Before we do anything, we must validate the input.
+Is it actually a number? (is_numeric)
+Is it a duplicate of another number? (check_duplicates)
+Is it within the integer limit? (The ft_atol check).
+If any check fails, the program prints "Error" and stops.
+Create Stack A: Valid numbers are used to build our initial stack, "Stack A," which is a doubly linked list.
+The "Magic" Index (assign_index): This is a key step. Instead of working with potentially large or random numbers like 87 or -10, we give each number a simple rank or "index" based on its sorted position. The smallest number gets index 0, the next smallest gets 1, and so on. This makes our sorting logic much simpler.
+
+Part 2: The Sorting Strategy - The "Dispatcher"
+Now we move to sort.c, the brain of the operation. The sort_stack function acts as a smart "dispatcher." It looks at the size of the stack and chooses the best algorithm.
+If 2 numbers: It just swaps them if needed (sa).
+If 3 numbers: It calls sort_three, a simple and efficient function that can sort any three numbers in a maximum of two moves.
+If 4 or 5 numbers: It calls sort_small. This function is smart: it finds the smallest numbers, pushes them to Stack B to get them out of the way, sorts the three remaining in Stack A, and then pushes the first ones back.
+If more than 5 numbers: It uses our main algorithm, K-Sort.
+
+Part 3: The Main Algorithm - K-Sort (Chunking)
+This is the algorithm for large lists. The goal is to move numbers from Stack A to Stack B in an organized way.
+
+Push to B: We loop through Stack A and push every element to Stack B. We use a "chunking" method to decide how to push them.
+
+We imagine the numbers in "chunks" (e.g., the first 20, the next 20, etc.).
+If a number belongs to a chunk we've already processed, we push it to B and do an extra rb (rotate B). This sends the smaller numbers deeper into Stack B.
+If a number belongs to the current chunk, we just push it to B (pb).
+If a number is too large for the current chunk, we rotate Stack A (ra) to deal with it later.
+This process naturally creates a semi-organized "K-shape" in Stack B, with the smallest numbers in the middle and the largest at the ends.
+Push Back to A: Once Stack A is empty, the final phase begins.
+
+We repeatedly find the number with the highest index (the largest number) in Stack B.
+We use the cheapest rotation (rb or rrb) to bring it to the top of Stack B.
+We push it to Stack A (pa).
+Since we always push the largest remaining number, Stack A is perfectly sorted by the time Stack B is empty.
 
 ----------------------------
 

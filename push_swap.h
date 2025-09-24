@@ -6,7 +6,7 @@
 /*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:30:53 by dashvydk          #+#    #+#             */
-/*   Updated: 2025/09/22 14:02:41 by dshvydka         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:01:44 by dshvydka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void				ft_error(void);
 int					is_numeric(const char *str);
 int					is_sorted(t_stack *stack);
 int					stack_size(t_stack *stack);
+int					get_pos(t_stack *stack, int index);
 
 // Memory deallocation
 void				free_stack(t_stack **stack);

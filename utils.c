@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:25:23 by dashvydk          #+#    #+#             */
-/*   Updated: 2025/09/12 15:33:39 by dashvydk         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:12:00 by dshvydka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,21 @@ int	is_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+int	get_pos(t_stack *stack, int index)
+{
+	int	pos;
+
+	pos = 0;
+	while (stack)
+	{
+		if (stack->index == index)
+			return (pos);
+		stack = stack->next;
+		pos++;
+	}
+	return (-1);
 }
 
 /*
