@@ -6,7 +6,7 @@
 /*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:25:33 by dashvydk          #+#    #+#             */
-/*   Updated: 2025/09/12 15:43:33 by dashvydk         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:04:42 by dashvydk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	assign_index(t_stack *stack)
 		while (temp)
 		{
 			if (curr->value > temp->value)
-				index++; // Count how many other numbers are smaller
+				index++;
 			temp = temp->next;
 		}
 		curr->index = index;

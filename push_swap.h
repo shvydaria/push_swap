@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:30:53 by dashvydk          #+#    #+#             */
-/*   Updated: 2025/09/24 20:01:44 by dshvydka         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:13:26 by dashvydk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void				free_split(char **arr);
 // Initial setup
 void				init_stack(t_stack **a, char **argv);
 void				assign_index(t_stack *stack);
+
+// Sort Utils
+int					get_min_index_pos(t_stack *stack);
+int					get_highest_index_pos(t_stack *stack);
 
 // Operations
 void				sa(t_stack **a);

@@ -25,7 +25,7 @@ else ifeq ($(OS), Darwin)
 	LDFLAGS = 
 endif
 
-SRCS =  push_swap.c init.c utils.c sort.c \
+SRCS =  push_swap.c init.c utils.c sort.c sort_utils.c \
 		operations_push.c operations_swap.c operations_rotate.c operations_reverse_rotate.c \
 		
 OBJ := $(SRCS:%.c=%.o)

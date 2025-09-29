@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 17:23:53 by dshvydka          #+#    #+#             */
-/*   Updated: 2025/09/21 17:28:21 by dshvydka         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:05:03 by dashvydk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ void	pb(t_stack **a, t_stack **b)
 	push(b, a);
 	ft_printf("pb\n");
 }
-

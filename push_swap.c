@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 16:31:08 by dashvydk          #+#    #+#             */
-/*   Updated: 2025/09/22 14:03:18 by dshvydka         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:08:17 by dashvydk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@ void	free_split(char **arr)
 	free(arr);
 }
 
-int	main(int argc, char **argv)
+static void	parse_and_init(int argc, char **argv, t_stack **stack_a)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
 	char	**args;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc < 2)
-		return (0);
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
@@ -64,18 +58,28 @@ int	main(int argc, char **argv)
 			free_split(args);
 		ft_error();
 	}
-	init_stack(&stack_a, args);
+	init_stack(stack_a, args);
+	if (argc == 2)
+		free_split(args);
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	if (argc < 2)
+		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
+	parse_and_init(argc, argv, &stack_a);
 	assign_index(stack_a);
 	if (is_sorted(stack_a))
 	{
 		free_stack(&stack_a);
-		if (argc == 2)
-			free_split(args);
 		return (0);
 	}
 	sort_stack(&stack_a, &stack_b);
-	if (argc == 2)
-		free_split(args);
 	free_stack(&stack_a);
 	return (0);
 }

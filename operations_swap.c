@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dshvydka <dshvydka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dashvydk <dashvydk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 17:24:15 by dshvydka          #+#    #+#             */
-/*   Updated: 2025/09/21 17:27:19 by dshvydka         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:05:30 by dashvydk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ void	ss(t_stack **a, t_stack **b)
 	swap(b);
 	ft_printf("ss\n");
 }
-

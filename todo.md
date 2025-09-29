@@ -39,10 +39,7 @@
 *.vsix
 
 
-
-
 ### k_sort
-
 1. Normalize the numbers
 Convert each number in Stack A to its rank (position if sorted), ranging from 1 to N.
 2. Initialize counters
@@ -98,9 +95,6 @@ The program executes in a clear, sequential order:
 
 
 ### Walkthough
-Your Push_Swap: A Code Walk-through
-Here is a simple, step-by-step explanation of your project that you can use to explain it to others.
-
 Part 1: The Setup - Getting the Numbers Ready
 Our program's journey begins in main.c.
 
